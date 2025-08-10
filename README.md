@@ -41,7 +41,7 @@ My choice of using Convolutional Neural Networks (CNNs) for this medical image c
 
 **Visual Proof from Training Console:**
 
-![Training Console Proof](/images/Test accuracy.png)
+![Training Console Proof](images/Test accuracy.png)
 
 
 **Training Configuration:**
