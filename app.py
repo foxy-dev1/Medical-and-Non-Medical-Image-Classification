@@ -21,13 +21,17 @@ st.header("Upload pdf or Give URL")
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 def load_model():
-     vgg_model = models.vgg16(weights=None)
-     in_features = vgg_model.classifier[-1].in_features
-     vgg_model.classifier[-1] = nn.Linear(in_features,5)
-     vgg_model.load_state_dict(torch.load("/home/leosama/playwright_learn/best_model (2).pth"))
-     vgg_model.eval()
-     return vgg_model
-
+     try:
+          vgg_model = models.vgg16(weights=None)
+          in_features = vgg_model.classifier[-1].in_features
+          vgg_model.classifier[-1] = nn.Linear(in_features,5)
+          vgg_model.load_state_dict(torch.load("best_model (2).pth"))
+          vgg_model.eval()
+          return vgg_model
+     except Exception as e:
+          st.error(f"Error loading model: {e}")
+          return None
+    
 if "images" not in st.session_state:
      st.session_state["images"] = set()
 
